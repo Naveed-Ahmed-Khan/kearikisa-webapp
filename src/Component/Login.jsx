@@ -3,7 +3,7 @@ import { Modal, ModalHeader, ModalBody } from "reactstrap";
 import { callApi } from "../Utitlies/callAPI";
 import { mapStateToProps, mapDispatchToProps } from "./Action/Action";
 import { connect } from "react-redux";
-import FacebookLogin from "react-facebook-login";
+import FacebookLogin from "react-facebook-login/dist/facebook-login-render-props";
 import Swal from "sweetalert2";
 class Login extends Component {
   constructor(props) {
@@ -140,21 +140,28 @@ class Login extends Component {
                 <div className="card-body">
                   <div className="text-center">
                     <div className="btn-group">
-                      {/* <a
+                      {/*   <a
                         onClick={this.handleFacebookPopUp}
                         href="#"
                         className="btn btn-icon me-2 brround"
                       >
                         <span className="fa fa-facebook" />
                       </a> */}
-                      {/* <FacebookLogin
-                        appId="732333577752077"
+                      <FacebookLogin
+                        appId="545406836561288"
                         // autoLoad={true}
                         fields="name,email,picture"
                         scope="public_profile,user_friends"
                         callback={this.responseFacebook}
-                        icon="fa-facebook"
-                      /> */}
+                        render={(renderProps) => (
+                          <button
+                            onClick={renderProps.onClick}
+                            className="btn btn-icon me-2 brround"
+                          >
+                            <span className="fa fa-facebook" />
+                          </button>
+                        )}
+                      />
                     </div>
                     <div className="btn-group">
                       <a

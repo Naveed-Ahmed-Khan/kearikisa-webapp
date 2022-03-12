@@ -8,13 +8,10 @@ import { useDispatch } from "react-redux";
 
 const BrowseCategories = () => {
   const reduxState = useSelector((state) => state);
-  const homeSearch = reduxState.MainSearch.payload;
+
   const [allAddsFilter, setAllAddsFilter] = useState([]);
-  console.log(homeSearch);
+
   const dispatch = useDispatch();
-  const homeAllAdds = () => {
-    if (homeSearch) setAllAddsFilter(homeSearch);
-  };
   useEffect(() => {
     ExternalJsCall();
     getNonpremiumadd();
@@ -41,7 +38,7 @@ const BrowseCategories = () => {
   const getNonpremiumadd = async () => {
     const adds = await callApi("/ad/getnonpremium");
     setAllAdds(adds);
-    // setAllAddsFilter(adds);
+    setAllAddsFilter(adds);
   };
 
   const getCategory = async () => {
@@ -103,9 +100,7 @@ const BrowseCategories = () => {
   };
   useEffect(() => {
     hanldeSearch();
-    homeAllAdds();
-    console.log(allAddsFilter);
-  }, [searchModal, homeSearch]);
+  }, [searchModal]);
   const [CurrentPageKey, setCurrentPageKey] = useState(100);
   const browseCategory = (
     <React.Fragment>
@@ -137,9 +132,7 @@ const BrowseCategories = () => {
                             id="text"
                             name="title"
                             placeholder="What are you looking for?"
-                            onChange={(e) => {
-                              handleInput(e);
-                            }}
+                            onChange={handleInput}
                             value={searchModal.title}
                           />
                         </div>

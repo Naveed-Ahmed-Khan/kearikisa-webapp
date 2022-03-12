@@ -72,10 +72,10 @@ export default function Home() {
       setAllAddsFilter(filterAdds);
       dispatch({
         type: "MainSearch",
-        data: allAddsFilter,
+        data: filterAdds,
       });
-      console.log(allAddsFilter);
-      navigate("/browse_categories");
+      console.log(filterAdds);
+      navigate("/results");
     }
   };
 

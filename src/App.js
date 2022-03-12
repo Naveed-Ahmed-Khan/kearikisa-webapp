@@ -18,6 +18,7 @@ import PrivacyPolicy from "./Component/PrivacyPolicy";
 import TermsCondition from "./Component/TermsCondition";
 import StaySafe from "./Component/StaySafe";
 import GetVerified from "./Component/GetVerified";
+import BrowseResults from "./Component/BrowseResults";
 const App = () => {
   useEffect(() => {
     ExternalJsCall();
@@ -35,12 +36,9 @@ const App = () => {
               <Route path="/" element={<Home />} />
               <Route path="/contact_us" element={<Contact />} />
               <Route path="/about_us" element={<About />} />
-              <Route path="/browse_categories" element={<BrowseCategories />}>
-                {/* <Route
-                  path="/browse_categories/product:product_id"
-                  element={<BrowseCategories />}
-                /> */}
-              </Route>
+              <Route path="/results" element={<BrowseResults />} />
+
+              <Route path="/browse_categories" element={<BrowseCategories />} />
               <Route path="/ad_post" element={<PostAdd />} />
               <Route path="/my_ads" element={<MyAds />} />
               <Route path="/my_profile" element={<Profile />} />
