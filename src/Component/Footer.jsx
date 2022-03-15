@@ -181,7 +181,7 @@ export default function Footer() {
                 </ul>
               </div>
               <div className="col-lg-4 col-md-12">
-                <h6>Subscribe</h6>
+                <h6>Subscribe to our newsletter</h6>
                 <hr
                   className="
             deep-purple

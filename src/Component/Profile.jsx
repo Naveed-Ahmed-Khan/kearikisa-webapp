@@ -119,6 +119,39 @@ export default function Profile(props) {
                     }  `}
                   >
                     <div className="card-body">
+                      <div
+                        className={`${
+                          fromSeller
+                            ? "col-sm-12 col-md-12 col-sld-12"
+                            : " col-sm-6 col-md-6"
+                        }`}
+                      >
+                        <div className={`row`}>
+                          <div className="profile-pic mb-5">
+                            <img
+                              src="../assets/images/faces/male/25.jpg"
+                              className="brround avatar-xxl"
+                              alt="user"
+                            />
+                          </div>
+                          <div className={`${fromSeller ? "d-none" : "row"}  `}>
+                            <div class="input-group mb-3">
+                              <input
+                                type="file"
+                                class="form-control"
+                                id="inputGroupFile02"
+                              />
+                              <label
+                                class="input-group-text"
+                                for="inputGroupFile02"
+                              >
+                                Upload
+                              </label>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
                       <div className="row">
                         <div
                           className={` ${
