@@ -6,7 +6,7 @@ import ProductCard from "./ProductCard";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 
-const BrowseResults = () => {
+const TagsResults = () => {
   const reduxState = useSelector((state) => state);
   const homeSearch = reduxState.MainSearch.payload;
 
@@ -115,4 +115,4 @@ const BrowseResults = () => {
     return <React.Fragment>{product}</React.Fragment>;
   }
 };
-export default BrowseResults;
+export default TagsResults;

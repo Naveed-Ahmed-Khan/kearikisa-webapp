@@ -5,7 +5,6 @@ import Home from "./Component/Home";
 import Contact from "./Component/Contact";
 import About from "./Component/About";
 import BrowseCategories from "./Component/BrowseCategories";
-import "./assets/js";
 import { useEffect } from "react";
 import { ExternalJsCall } from "./Utitlies/LoadExternalJs";
 import { stickyHeader } from "./Utitlies/stickyHeader";
@@ -22,7 +21,6 @@ import BrowseResults from "./Component/BrowseResults";
 const App = () => {
   useEffect(() => {
     ExternalJsCall();
-    stickyHeader();
   }, []);
   return (
     <div className="main-body">
@@ -37,8 +35,8 @@ const App = () => {
               <Route path="/contact_us" element={<Contact />} />
               <Route path="/about_us" element={<About />} />
               <Route path="/results" element={<BrowseResults />} />
-
               <Route path="/browse_categories" element={<BrowseCategories />} />
+
               <Route path="/ad_post" element={<PostAdd />} />
               <Route path="/my_ads" element={<MyAds />} />
               <Route path="/my_profile" element={<Profile />} />

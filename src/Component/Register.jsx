@@ -113,7 +113,7 @@ export default function Register(props) {
   };
   return (
     <Modal isOpen={open} size="lg">
-      <ModalHeader toggle={close}>Register</ModalHeader>
+      <ModalHeader toggle={close}>Register and start selling</ModalHeader>
       <ModalBody>
         {!sendOTPPopUp ? (
           <div className="single-page customerpage ">
@@ -128,9 +128,8 @@ export default function Register(props) {
                     className="form-control"
                     required
                   />
-
-                  <label>Full Name</label>
                 </div>
+                <label>Full Name</label>
                 <div className="mail">
                   <Form.Control
                     type="text"

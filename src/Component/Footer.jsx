@@ -21,7 +21,7 @@ export default function Footer() {
                 </p>
               </div>
               <div className="col-lg-2 col-md-12">
-                <h6>Our Services</h6>
+                <h6>Support</h6>
                 <hr
                   className="
             deep-purple
@@ -36,18 +36,19 @@ export default function Footer() {
                 <ul className="list-unstyled mb-0">
                   <li>
                     <Link
-                      to="/contact_us"
+                      to="/get_verified"
                       onClick={() => {
                         window.scrollTo(0, 0);
-                        dispatch({
+                        /* dispatch({
                           type: "ActiveNav",
                           data: "Contact Us",
-                        });
+                        }); */
                       }}
                     >
-                      Contact Us
+                      Get Verified
                     </Link>
                   </li>
+
                   <li>
                     <Link
                       to="/about_us"
@@ -138,7 +139,7 @@ export default function Footer() {
                       support@kearekisa.co.bw
                     </a>
                   </li>
-                  <li>
+                  {/* <li>
                     <a
                       href="#"
                       onClick={(e) => {
@@ -147,6 +148,21 @@ export default function Footer() {
                     >
                       <i className="fa fa-phone me-3 text-primary" /> +267
                     </a>
+                  </li> */}
+                  <li>
+                    <Link
+                      to="/contact_us"
+                      onClick={() => {
+                        window.scrollTo(0, 0);
+                        dispatch({
+                          type: "ActiveNav",
+                          data: "Contact Us",
+                        });
+                      }}
+                    >
+                      <i className="fa fa-phone me-3 text-primary" />
+                      Contact Us
+                    </Link>
                   </li>
                 </ul>
                 <ul className="list-unstyled list-inline mt-3">

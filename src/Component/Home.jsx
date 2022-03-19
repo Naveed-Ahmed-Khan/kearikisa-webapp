@@ -64,7 +64,6 @@ export default function Home() {
     const { title } = searchModal;
     console.log(searchModal);
     let filterAdds = allAddsforFilter;
-
     if (title) {
       filterAdds = allAddsforFilter.filter((items) =>
         (items.title.toLowerCase() || {}).includes((title || {}).toLowerCase())
@@ -131,11 +130,9 @@ export default function Home() {
                       </div>
 
                       <div className="col-xl-2 col-lg-3 col-md-12 mb-0">
-                        <a
-                          style={{ backgroundColor: "#fceb42 " }}
-                          href="#"
+                        <button
                           className="
-                              btn btn-lg btn-block text-dark
+                              btn btn-lg btn-block btn-warning text-white
                               br-ts-md-0 br-bs-md-0
                             "
                           onClick={(e) => {
@@ -144,7 +141,7 @@ export default function Home() {
                           }}
                         >
                           Search Here
-                        </a>
+                        </button>
                       </div>
                     </div>
                   </div>

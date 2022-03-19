@@ -5,10 +5,13 @@ import { callApi } from "../Utitlies/callAPI";
 import ProductCard from "./ProductCard";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
+import { Form } from "react-bootstrap";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { useLocation } from "react-router";
 
 const BrowseCategories = () => {
   const reduxState = useSelector((state) => state);
-
+  const location = useLocation();
   const [allAddsFilter, setAllAddsFilter] = useState([]);
 
   const dispatch = useDispatch();
@@ -24,7 +27,7 @@ const BrowseCategories = () => {
     title: "",
     // title: ((reduxState || {}).MainSearch || {}).payload?.title,
   });
-  console.log(reduxState.MainSearch.payload);
+  /* console.log(reduxState.MainSearch.payload); */
   const [allAdds, setAllAdds] = useState([]);
 
   const [categoryList, setCategoryList] = useState([]);
@@ -64,6 +67,9 @@ const BrowseCategories = () => {
       ...searchModal,
       [name]: value,
     });
+    /* location.pathname = `/browse_categories?${name}=${value}`; */
+    /* const search = (location.search = `?${name}=${value}`);
+    console.log(search); */
     dispatch({
       type: "MainSearch",
       data: "",
@@ -185,14 +191,36 @@ const BrowseCategories = () => {
                         <div className>
                           <div className="row">
                             <div className="col-lg-3 col-md-12">
-                              <h6 className="mb-0 mt-2">
-                                Showing 1 to {(allAddsFilter || []).length} of{" "}
-                                {(allAdds || []).length} entries
-                              </h6>
+                              <div className="row d-flex">
+                                <div className="col-lg-8 col-md-10">
+                                  <h6 className="mt-3">
+                                    Showing 1 to {(allAddsFilter || []).length}{" "}
+                                    of {(allAdds || []).length} entries
+                                  </h6>
+                                </div>
+                                <div
+                                  style={{ marginLeft: "auto" }}
+                                  className="col-lg-4 col-md-2"
+                                >
+                                  <button
+                                    className="btn btn-primary "
+                                    onClick={() => {
+                                      setSearchModal({
+                                        cat: "",
+                                        loc: "",
+                                        title: "",
+                                      });
+                                    }}
+                                  >
+                                    Clear All
+                                  </button>
+                                </div>
+                              </div>
                             </div>
+
                             <div className="col-lg-5 col-md-12 d-flex">
                               <select
-                                className="form-control"
+                                className="form-select"
                                 name="cat"
                                 value={searchModal.cat}
                                 onChange={handleInput}
@@ -209,7 +237,7 @@ const BrowseCategories = () => {
                             </div>
                             <div className="col-lg-4 col-md-12 d-flex">
                               <select
-                                className="form-control"
+                                className="form-select"
                                 name="loc"
                                 value={searchModal.loc}
                                 onChange={handleInput}

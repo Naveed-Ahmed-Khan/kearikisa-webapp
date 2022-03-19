@@ -1,15 +1,18 @@
 import React, { useEffect, useState } from "react";
 import { callApi } from "../Utitlies/callAPI";
 import Swal from "sweetalert2";
+import productImg from "../assets/img/product.png";
 import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import Accordion from "react-bootstrap/Accordion";
 import Profile from "./Profile";
+import { Button, Collapse } from "react-bootstrap";
 
 export default function Product(props) {
   const { seletedAdd, handlePageKey } = props;
   const createdData = seletedAdd.createdAt.split("T");
+  const [open, setOpen] = useState(false);
   const [review, setReview] = useState([]);
   const [toggle, setToggle] = useState(false);
   const [saveModalReview, setSaveModalReview] = useState({
@@ -452,65 +455,23 @@ export default function Product(props) {
                               id="full-gallery"
                             >
                               <div className="carousel-item active">
+                                {/* {seletedAdd.mainimg.map((item) => {
+                                  return <></>
+                                })} */}
                                 <img
-                                  src="../assets/images/products/products/v1.jpg"
+                                  src={
+                                    seletedAdd.mainimg
+                                      ? seletedAdd.mainimg
+                                      : productImg
+                                  }
                                   alt="img"
+                                  style={{
+                                    objectFit: "cover",
+                                    margin: "0 auto",
+                                  }}
                                 />
                               </div>
-                              <div className="carousel-item">
-                                <img
-                                  src="../assets/images/products/products/v2.jpg"
-                                  alt="img"
-                                />
-                              </div>
-                              <div className="carousel-item">
-                                <img
-                                  src="../assets/images/products/products/v3.jpg"
-                                  alt="img"
-                                />
-                              </div>
-                              <div className="carousel-item">
-                                <img
-                                  src="../assets/images/products/products/v4.jpg"
-                                  alt="img"
-                                />
-                              </div>
-                              <div className="carousel-item">
-                                <img
-                                  src="../assets/images/products/products/v1.jpg"
-                                  alt="img"
-                                />
-                              </div>
-                              <div className="carousel-item">
-                                <img
-                                  src="../assets/images/products/products/v1.jpg"
-                                  alt="img"
-                                />
-                              </div>
-                              <div className="carousel-item">
-                                <img
-                                  src="../assets/images/products/products/v2.jpg"
-                                  alt="img"
-                                />
-                              </div>
-                              <div className="carousel-item">
-                                <img
-                                  src="../assets/images/products/products/v3.jpg"
-                                  alt="img"
-                                />
-                              </div>
-                              <div className="carousel-item">
-                                <img
-                                  src="../assets/images/products/products/v4.jpg"
-                                  alt="img"
-                                />
-                              </div>
-                              <div className="carousel-item">
-                                <img
-                                  src="../assets/images/products/products/v1.jpg"
-                                  alt="img"
-                                />
-                              </div>
+
                               <div className="thumbcarousel">
                                 <a
                                   onClick={(e) => {
@@ -522,6 +483,7 @@ export default function Product(props) {
                                   data-bs-slide="prev"
                                 >
                                   <i
+                                    style={{ color: "#199319" }}
                                     className="fa fa-angle-left"
                                     aria-hidden="true"
                                   />
@@ -536,11 +498,29 @@ export default function Product(props) {
                                   data-bs-slide="next"
                                 >
                                   <i
+                                    style={{ color: "#199319" }}
                                     className="fa fa-angle-right"
                                     aria-hidden="true"
                                   />
                                 </a>
                               </div>
+                            </div>
+                          </div>
+                          <div className="mt-4">
+                            <p>Share this on:</p>
+                            <div
+                              id="share"
+                              style={{
+                                display: "flex",
+                                alignItems: "center",
+
+                                gap: "1rem",
+                              }}
+                            >
+                              <i class="fa fa-facebook"></i>
+                              <i class="fa fa-twitter"></i>
+                              <i class="fa fa-whatsapp"></i>
+                              <i class="fa fa-envelope"></i>
                             </div>
                           </div>
                         </div>

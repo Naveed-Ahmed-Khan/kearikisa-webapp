@@ -6334,8 +6334,8 @@ select.form-control:focus::-ms-value {
   line-height: 1.5;
   color: #605e7e;
   vertical-align: middle;
-  background: #fff url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 5'%3E%3Cpath fill='#999' d='M0 0L10 0L5 5L0 0'/%3E%3C/svg%3E") no-repeat right 0.75rem center;
-  background-size: 8px 10px;
+  /* background: #fff url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 5'%3E%3Cpath fill='#999' d='M0 0L10 0L5 5L0 0'/%3E%3C/svg%3E") no-repeat right 0.75rem center;
+  background-size: 8px 10px; */
   border: 1px solid #e8ebf3;
   border-radius: 3px;
   -webkit-appearance: none;
@@ -11253,7 +11253,7 @@ a.tag-addon:hover {
     background: #fff;
     -webkit-box-shadow: 2px 3px 4.7px 0.3px rgba(0, 0, 0, 0.24);
             box-shadow: 2px 3px 4.7px 0.3px rgba(0, 0, 0, 0.24);
-    height: 80px !important;
+    /* height: 80px !important; */
   }
   .sticky-wrapper.is-sticky .horizontal-main .ad-post {
     margin-top: -0.25rem !important;
@@ -33059,8 +33059,8 @@ body.rtl {
   right: 12px;
   width: 8px;
   height: 10px;
-  background: #fff url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 5'%3E%3Cpath fill='#999' d='M0 0L10 0L5 5L0 0'/%3E%3C/svg%3E") no-repeat center;
-  background-size: 8px 10px;
+  /* background: #fff url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 5'%3E%3Cpath fill='#999' d='M0 0L10 0L5 5L0 0'/%3E%3C/svg%3E") no-repeat center;
+  background-size: 8px 10px; */
   -webkit-transition: .3s transform;
   transition: .3s transform;
 }

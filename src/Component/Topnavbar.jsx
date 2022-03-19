@@ -61,88 +61,8 @@ class Topnavbar extends Component {
     return (
       <React.Fragment>
         {/*Topbar*/}
-        <div className="header-main">
-          {!this.props.loginToken ? (
-            <div className="top-bar">
-              <div className="container">
-                <div className="row">
-                  <div className="col-xl-12 col-lg-12 col-sm-8 col-5">
-                    <div className="top-bar-right">
-                      <ul className="custom">
-                        <li>
-                          <a
-                            onClick={(e) => {
-                              e.preventDefault();
-                              this.hanldeRegisterPop();
-                            }}
-                            href="#"
-                            className="text-dark"
-                          >
-                            <i className="fa fa-user me-1" />{" "}
-                            <span>Register</span>
-                          </a>
-                        </li>
-                        <li>
-                          <a
-                            href="#"
-                            className="text-dark"
-                            onClick={this.hanldeLoginPop}
-                          >
-                            <i className="fa fa-sign-in me-1" />{" "}
-                            <span>Login</span>
-                          </a>
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          ) : (
-            <div className="top-bar">
-              <div className="container">
-                <div className="row">
-                  <div className="col-xl-12 col-lg-12 col-sm-8 col-5">
-                    <div className="top-bar-right">
-                      <ul className="custom">
-                        <li>
-                          <Link
-                            to="my_profile"
-                            className="text-dark"
-                            onClick={(e) => this.handleTab(e, "")}
-                          >
-                            <i className="fa fa-user me-1" />{" "}
-                            <span>My Profile</span>
-                          </Link>
-                        </li>
-                        <li>
-                          <Link
-                            to="my_ads"
-                            className="text-dark"
-                            onClick={(e) => this.handleTab(e, "")}
-                          >
-                            <i className="fa fa-users me-1" />{" "}
-                            <span>My Ads</span>
-                          </Link>
-                        </li>
-                        <li>
-                          <a
-                            href="#"
-                            className="text-dark"
-                            onClick={this.hanldeLogout}
-                          >
-                            <i className="fa fa-sign-in me-1" />{" "}
-                            <span>Logout</span>
-                          </a>
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          )}
 
+        <div className="header-main">
           {/* Mobile Header */}
           <div className="sticky">
             <div className="horizontal-header clearfix ">
@@ -164,18 +84,94 @@ class Topnavbar extends Component {
                     alt=""
                   />
                 </span>
-                {/* <a
-                  href="#"
-                  className="callusbtn"
-                  onClick={(e) => e.preventDefault()}
-                >
-                  <i className="fa fa-phone" aria-hidden="true" />
-                </a> */}
               </div>
             </div>
           </div>
           {/* /Mobile Header */}
+
           <div className="horizontal-main bg-dark-transparent clearfix">
+            <div>
+              {!this.props.loginToken ? (
+                <div className="top-bar">
+                  <div className="container">
+                    <div className="row">
+                      <div className="col-xl-12 col-lg-12 col-sm-8 col-5">
+                        <div className="top-bar-right">
+                          <ul className="custom">
+                            <li>
+                              <a
+                                onClick={(e) => {
+                                  e.preventDefault();
+                                  this.hanldeRegisterPop();
+                                }}
+                                href="#"
+                                className="text-dark"
+                              >
+                                <i className="fa fa-user me-1" />{" "}
+                                <span>Register</span>
+                              </a>
+                            </li>
+                            <li>
+                              <a
+                                href="#"
+                                className="text-dark"
+                                onClick={this.hanldeLoginPop}
+                              >
+                                <i className="fa fa-sign-in me-1" />{" "}
+                                <span>Login</span>
+                              </a>
+                            </li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              ) : (
+                <div className="top-bar">
+                  <div className="container">
+                    <div className="row">
+                      <div className="col-xl-12 col-lg-12 col-sm-8 col-5">
+                        <div className="top-bar-right">
+                          <ul className="custom">
+                            <li>
+                              <Link
+                                to="my_profile"
+                                className="text-dark"
+                                onClick={(e) => this.handleTab(e, "")}
+                              >
+                                <i className="fa fa-user me-1" />{" "}
+                                <span>My Profile</span>
+                              </Link>
+                            </li>
+                            <li>
+                              <Link
+                                to="my_ads"
+                                className="text-dark"
+                                onClick={(e) => this.handleTab(e, "")}
+                              >
+                                <i className="fa fa-users me-1" />{" "}
+                                <span>My Ads</span>
+                              </Link>
+                            </li>
+                            <li>
+                              <a
+                                href="#"
+                                className="text-dark"
+                                onClick={this.hanldeLogout}
+                              >
+                                <i className="fa fa-sign-in me-1" />{" "}
+                                <span>Logout</span>
+                              </a>
+                            </li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              )}
+            </div>
             <div className="horizontal-mainwrapper container clearfix">
               <div className="desktoplogo" style={{ height: "80px" }}>
                 <Link to="/" onClick={(e) => this.handleTab(e, "Home")}>
@@ -186,7 +182,13 @@ class Topnavbar extends Component {
                   />
                 </Link>
               </div>
-              <div className="desktoplogo-1" style={{ height: "80px" }}>
+              <div
+                className="desktoplogo-1"
+                style={{
+                  objectFit: "contain",
+                  height: "80px",
+                }}
+              >
                 <Link to="/" onClick={(e) => this.handleTab(e, "Home")}>
                   <img
                     src="../assets/images/brand/newLogo.png"
@@ -196,6 +198,7 @@ class Topnavbar extends Component {
                 </Link>
               </div>
               {/*Nav*/}
+
               <nav
                 className="horizontalMenu clearfix d-md-flex"
                 style={{ fontSize: "16px" }}
@@ -224,33 +227,6 @@ class Topnavbar extends Component {
                     >
                       Browse Categories{" "}
                     </Link>
-                    {/* <ul className="sub-menu">
-                      <li aria-haspopup="true">
-                        <a href="classified.html">Restaurant</a>
-                      </li>
-                      <li aria-haspopup="true">
-                        <a href="classified-right.html">Clothing </a>
-                      </li>
-                      <li aria-haspopup="true">
-                        <a href="classified-right.html">Services</a>
-                      </li>
-                      <li aria-haspopup="true">
-                        <a href="classified-right.html">Education </a>
-                      </li>
-                      <li aria-haspopup="true">
-                        <a href="classified-right.html">Beauty</a>
-                      </li>
-                      <li aria-haspopup="true">
-                        <a href="classified-right.html">
-                          Sports &amp; Outdoors
-                        </a>
-                      </li>
-                      <li aria-haspopup="true">
-                        <a href="classified-right.html">
-                          Sports &amp; Outdoors
-                        </a>
-                      </li>
-                    </ul> */}
                   </li>
                   <li aria-haspopup="true">
                     <Link
@@ -258,25 +234,7 @@ class Topnavbar extends Component {
                       className={ActiveTab === "About Us" ? "active" : ""}
                       onClick={(e) => this.handleTab(e, "About Us")}
                     >
-                      About Us{" "}
-                    </Link>
-                  </li>
-                  <li aria-haspopup="true">
-                    <Link
-                      to="contact_us"
-                      className={ActiveTab === "Contact Us" ? "active" : ""}
-                      onClick={(e) => this.handleTab(e, "Contact Us")}
-                    >
-                      Contact Us <span className="wsarrow" />
-                    </Link>
-                  </li>
-                  <li aria-haspopup="true">
-                    <Link
-                      to="get_verified"
-                      className={ActiveTab === "Get Verified" ? "active" : ""}
-                      onClick={(e) => this.handleTab(e, "Get Verified")}
-                    >
-                      Get Verified <span className="wsarrow" />
+                      About Us
                     </Link>
                   </li>
                   <li aria-haspopup="true" className="PostFreeAdd">
@@ -303,6 +261,7 @@ class Topnavbar extends Component {
             </div>
           </div>
         </div>
+
         {loginPopup ? (
           <Login
             open={loginPopup}

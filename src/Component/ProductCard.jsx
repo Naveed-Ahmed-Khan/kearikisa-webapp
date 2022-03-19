@@ -1,5 +1,7 @@
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useEffect, useState } from "react";
+
+import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router";
 import productImg from "../assets/img/product.png";
 import { callApi } from "../Utitlies/callAPI";
 
@@ -13,9 +15,15 @@ export default function ProductCard({
 }) {
   useEffect(() => {
     getReview();
-  });
-
-  console.log("items are" + JSON.stringify(items));
+  }, []);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  /* console.log("items are" + JSON.stringify(items)); */
+  const [isOpen, setisOpen] = useState(false);
+  const [searchModal, setSearchModal] = useState("");
+  const [search, setSearch] = useState("");
+  const [allAdds, setAllAdds] = useState("");
+  const [allAddsFilter, setAllAddsFilter] = useState([]);
 
   const [tags, setTagsList] = useState([]);
   const [productRating, setProductRating] = useState(0);
@@ -29,6 +37,7 @@ export default function ProductCard({
     averageReview = sumAllReview / (addsReview || []).length || 0;
     setProductRating(parseInt(averageReview));
   };
+  /* console.log(search); */
 
   let tagsList = [];
 
@@ -38,7 +47,7 @@ export default function ProductCard({
   const getTags = async () => {
     const { metalist } = await callApi("/tag", "get");
     setTagsList(metalist);
-    console.log(metalist);
+    /* console.log(metalist); */
   };
   useEffect(() => {
     getTags();
@@ -107,6 +116,36 @@ export default function ProductCard({
       );
     }
   };
+
+  const getNonpremiumadd = async () => {
+    const adds = await callApi("/ad/getnonpremium");
+    setAllAdds(adds);
+  };
+  const handleSearch = () => {
+    /* console.log(allAdds); */
+    /* console.log(searchModal) */
+    let filterAdds;
+    if (searchModal === items.tag) {
+      filterAdds = allAdds.filter((item) => item.tag === searchModal);
+      console.log(filterAdds);
+    } else if (searchModal === items.category) {
+      filterAdds = allAdds.filter((item) => item.category === searchModal);
+      console.log(filterAdds);
+    }
+
+    if (searchModal) {
+      dispatch({
+        type: "MainSearch",
+        data: filterAdds,
+      });
+      navigate("/results");
+    }
+  };
+
+  useEffect(() => {
+    getNonpremiumadd();
+    handleSearch();
+  }, [searchModal]);
   return (
     <>
       <div
@@ -176,66 +215,59 @@ export default function ProductCard({
             </div>
           </div>
           <div className="card-body">
-            {/* <div className="col-sm-10 col-md-10 col-lg-10"></div>
-            <div className="col-sm-2 col-md-2 col-lg-2">
-              <p>
-                <button
-                  class="btn btn-primary"
-                  type="button"
-                  data-bs-toggle="collapse"
-                  data-bs-target="#collapseExample"
-                  aria-expanded="false"
-                  aria-controls="collapseExample"
+            <div className="row">
+              <div className="item-card9">
+                <div
+                  onClick={() => {
+                    setSearchModal(items.category);
+                  }}
+                  style={{
+                    cursor: "pointer",
+                  }}
                 >
-                  <i class="fa fa-share"></i>
-                </button>
-              </p>
-              <div class="collapse" id="collapseExample">
-                <div class="card card-body">
-                  <i class="fa fa-facebook"></i>
-                  <i class="fa fa-facebook"></i>
-                  <i class="fa fa-facebook"></i>
-                  <i class="fa fa-facebook"></i>
+                  {items.category}
                 </div>
-              </div>
-            </div> */}
-            <div className="item-card9">
-              {items.category}
 
-              <a
-                href="#"
-                onClick={(e) => {
-                  handlePageKey(e, 101, items);
-                }}
-                className="text-dark mt-2"
-              >
-                <h4 className="font-weight-semibold mt-1">{items.title}</h4>
-              </a>
-              <p>{items.description}</p>
+                <div
+                  onClick={(e) => {
+                    handlePageKey(e, 101, items);
+                  }}
+                  className="text-dark mt-2"
+                >
+                  <h4
+                    className="font-weight-semibold mt-1"
+                    style={{ cursor: "pointer" }}
+                  >
+                    {items.title}
+                  </h4>
+                </div>
+                <p>{items.description}</p>
 
-              <div
-                style={{
-                  display: "flex",
-                  alignItems: "center",
-                  flexDirection: "row",
-                  flexWrap: "wrap",
-                }}
-              >
-                {tagsList.map((item) => {
-                  return (
-                    <p
-                      style={{
-                        margin: "0 0 4px 4px",
-                        padding: "2px 4px",
-                        borderRadius: "4px",
-                        border: "1px solid rgba(0, 0, 0, 0.19)",
-                        cursor: "pointer",
-                      }}
-                    >
-                      {item.tag}
-                    </p>
-                  );
-                })}
+                <div
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    flexDirection: "row",
+                    flexWrap: "wrap",
+                  }}
+                >
+                  <p
+                    style={{
+                      margin: "0 0 4px 4px",
+                      padding: "2px 4px",
+                      borderRadius: "4px",
+                      border: "1px solid rgba(0, 0, 0, 0.19)",
+                      cursor: "pointer",
+                    }}
+                    name="tag"
+                    onClick={() => {
+                      setSearchModal(items.tag);
+                      console.log(searchModal);
+                    }}
+                  >
+                    {items.tag}
+                  </p>
+                </div>
               </div>
             </div>
           </div>
