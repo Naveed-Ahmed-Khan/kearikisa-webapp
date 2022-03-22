@@ -34,9 +34,7 @@ const App = () => {
               <Route path="/" element={<Home />} />
               <Route path="/contact_us" element={<Contact />} />
               <Route path="/about_us" element={<About />} />
-              <Route path="/results" element={<BrowseResults />} />
               <Route path="/browse_categories" element={<BrowseCategories />} />
-
               <Route path="/ad_post" element={<PostAdd />} />
               <Route path="/my_ads" element={<MyAds />} />
               <Route path="/my_profile" element={<Profile />} />
@@ -44,6 +42,12 @@ const App = () => {
               <Route path="/terms_condition" element={<TermsCondition />} />
               <Route path="/stay_safe" element={<StaySafe />} />
               <Route path="/get_verified" element={<GetVerified />} />
+              {/* Search Routes */}
+              <Route path="/results" element={<BrowseResults />} />
+              <Route path="/category/:name" element={<BrowseResults />} />
+              <Route path="/tag/:name" element={<BrowseResults />} />
+              <Route path="/location/:name" element={<BrowseResults />} />
+              {/* Search Routes */}
             </Routes>
             {/*Footer Section*/}
             <Footer />

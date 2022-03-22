@@ -5,15 +5,19 @@ import { callApi } from "../Utitlies/callAPI";
 import ProductCard from "./ProductCard";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
+import { useLocation, useParams } from "react-router";
 
 const BrowseResults = () => {
+  const params = useParams();
+  const location = useLocation();
   const reduxState = useSelector((state) => state);
   const homeSearch = reduxState.MainSearch.payload;
 
   const [allAddsFilter, setAllAddsFilter] = useState([]);
   /* console.log(productSearch); */
+  console.log(allAddsFilter);
   console.log(homeSearch);
-  console.log(reduxState.MainSearch.payload);
+  /* console.log(reduxState.MainSearch.payload); */
 
   const [seletedAdd, setSeletedAdd] = useState({});
   const handlePageKey = (e, key, items) => {
@@ -41,10 +45,25 @@ const BrowseResults = () => {
                   <div className="col-xl-8 col-lg-12 col-md-12 d-block mx-auto">
                     <div className="text-center text-white">
                       <h1 className>
-                        <span className="font-weight-bold">
-                          {(allAddsFilter || []).length}{" "}
+                        {/* <span className="font-weight-bold">
+                          {(allAddsFilter || []).length}
                         </span>
-                        Results Available
+                        &nbsp;Result(s) Available for*/}
+                        <span>
+                          {location.pathname === "/results" && ""}
+                          {location.pathname === `/tag/${params.name}` &&
+                          (allAddsFilter[0] || []).tag
+                            ? `${(allAddsFilter[0] || []).tag}`
+                            : ""}
+                          {location.pathname === `/category/${params.name}` &&
+                          (allAddsFilter[0] || []).category
+                            ? `${(allAddsFilter[0] || []).category}`
+                            : ""}
+                          {location.pathname === `/location/${params.name}` &&
+                          (allAddsFilter[0] || []).location
+                            ? `${(allAddsFilter[0] || []).location}`
+                            : ""}
+                        </span>
                       </h1>
                     </div>
                   </div>
@@ -62,7 +81,12 @@ const BrowseResults = () => {
               {/* <h4 className="page-title">Product list</h4> */}
               <ol className="breadcrumb">
                 <li className="breadcrumb-item active" aria-current="page">
-                  Results
+                  {location.pathname === "/results" && "Results"}
+                  {location.pathname === `/tag/${params.name}` && "Tag"}
+                  {location.pathname === `/category/${params.name}` &&
+                    "Category"}
+                  {location.pathname === `/location/${params.name}` &&
+                    "Location"}
                 </li>
               </ol>
             </div>

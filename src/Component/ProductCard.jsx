@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 
 import { useDispatch } from "react-redux";
-import { useNavigate } from "react-router";
+import { useNavigate, useParams } from "react-router";
 import productImg from "../assets/img/product.png";
 import { callApi } from "../Utitlies/callAPI";
 
@@ -16,14 +16,13 @@ export default function ProductCard({
   useEffect(() => {
     getReview();
   }, []);
+
   const dispatch = useDispatch();
   const navigate = useNavigate();
   /* console.log("items are" + JSON.stringify(items)); */
-  const [isOpen, setisOpen] = useState(false);
+
   const [searchModal, setSearchModal] = useState("");
-  const [search, setSearch] = useState("");
   const [allAdds, setAllAdds] = useState("");
-  const [allAddsFilter, setAllAddsFilter] = useState([]);
 
   const [tags, setTagsList] = useState([]);
   const [productRating, setProductRating] = useState(0);
@@ -127,19 +126,30 @@ export default function ProductCard({
     let filterAdds;
     if (searchModal === items.tag) {
       filterAdds = allAdds.filter((item) => item.tag === searchModal);
-      console.log(filterAdds);
+
+      dispatch({
+        type: "MainSearch",
+        data: filterAdds,
+      });
+      navigate(`/tag/${filterAdds[0].tag}`);
+      /* console.log(filterAdds); */
     } else if (searchModal === items.category) {
       filterAdds = allAdds.filter((item) => item.category === searchModal);
-      console.log(filterAdds);
+      dispatch({
+        type: "MainSearch",
+        data: filterAdds,
+      });
+      navigate(`/category/${filterAdds[0].category}`);
+      /* console.log(filterAdds); */
     }
 
-    if (searchModal) {
+    /* if (searchModal) {
       dispatch({
         type: "MainSearch",
         data: filterAdds,
       });
       navigate("/results");
-    }
+    } */
   };
 
   useEffect(() => {
